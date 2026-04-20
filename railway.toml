@@ -1,0 +1,40 @@
+[build]
+builder = "DOCKERFILE"
+dockerfilePath = "Dockerfile"
+
+[deploy]
+healthcheckPath = "/health"
+healthcheckTimeout = 30
+startCommand = "node src/server.js"
+
+[[variables]]
+name = "TDS_AUTH_TOKEN"
+description = "Your TDS auth token — copy from the terminal setup page"
+required = true
+
+[[variables]]
+name = "TDS_MCP_URL"
+description = "URL of the TDS MCP server"
+required = false
+defaultValue = "https://tds-mcp-production.up.railway.app"
+
+[[variables]]
+name = "AI_API_KEY"
+description = "API key for your AI provider (Anthropic, OpenAI, or OpenRouter)"
+required = false
+
+[[variables]]
+name = "AI_PROVIDER"
+description = "AI provider: anthropic, openai, or openrouter"
+required = false
+defaultValue = "anthropic"
+
+[[variables]]
+name = "VERTEX_PROJECT_ID"
+description = "GCP project ID (only for Vertex AI)"
+required = false
+
+[[variables]]
+name = "VERTEX_SERVICE_ACCOUNT_JSON"
+description = "GCP service account JSON (only for Vertex AI)"
+required = false
